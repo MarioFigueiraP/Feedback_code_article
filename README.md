@@ -1,6 +1,8 @@
-This repository contains the code used for the article Bayesian feedback in the framework of ecological sciences.
+# Bayesian feedback in the framework of ecological sciences
 
-The repository includes a folder with functions to run the `Main_code_feedback.R` file, which allows reproducing the simulated results presented in the article. The various files include brief descriptions detailing the procedures throughout the code.
+In this repository, the code used to obtain the results in the article *Bayesian feedback in the framework of ecological sciences* is provided. The repository includes the main script to reproduce these results (*Main_code_feedback.R*) and a folder (*functions*) where the auxiliary scripts used in the main script are stored.
+
+## Summary of the scripts
 
 In particular, the different scripts are summarized below as a brief introduction to them.
 
@@ -19,3 +21,5 @@ In particular, the different scripts are summarized below as a brief introductio
   7. `several_functions.R`: This script defines various general-purpose functions.
 
   8. `simulation_function.R`: This script defines the function for simulating the underlying biomass process, given the parameters that characterize each scenario.
+
+
