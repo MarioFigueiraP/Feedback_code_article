@@ -21,5 +21,3 @@ In particular, the different scripts are summarized below as a brief introductio
   7. `several_functions.R`: This script defines various general-purpose functions.
 
   8. `simulation_function.R`: This script defines the function for simulating the underlying biomass process, given the parameters that characterize each scenario.
-
-
