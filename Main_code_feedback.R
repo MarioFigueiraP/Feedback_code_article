@@ -19,18 +19,20 @@ source("./functions/fb_independent_model.R")
 source("./functions/fb_dependent_model.R")
 source("./functions/several_functions.R")
 
+# Formula for the covariate with spatial structure (x,y)
 cov.formula <- "1.25*x**2 + 0.25*cos(x*pi)**2 + 0.25*sin(y*pi)**2"
-range <- c(0.2,0.5,1)
-sigma <- c(0.5, 1, 2)
-size <- c(1E2, 250, 5E2, 1E3)
+range <- c(0.2,0.5,1) # Spatial range
+sigma <- c(0.5, 1, 2) # Stdev values for the spatial effect
+size <- c(1E2, 250, 5E2, 1E3) # Sample sizes
 
-A <- list(range = range, sigma = sigma, size = size)
-A_DF <- combinatorialFunction(input_list = A)
-A_DF <- as.data.frame(lapply(X = A_DF, FUN = rep, 1))
+A <- list(range = range, sigma = sigma, size = size) # List of the settings for the scenarios
+A_DF <- combinatorialFunction(input_list = A) # Combinatorial configuration to set all the scenarios
+A_DF <- as.data.frame(lapply(X = A_DF, FUN = rep, 10)) # Setting the 10 replicas for the different settings 
 
-results <- list(ind.rmse = NULL, ind.mape = NULL, dep.rmse = NULL, dep.mape = NULL)
+results <- list(ind.rmse = NULL, ind.mape = NULL, dep.rmse = NULL, dep.mape = NULL) # Data frame to store the results
 
 for(i in 1:nrow(A_DF)){
+  # Loop to perform the simulations and analysis, using the models (independent and preferential) with and without feedback
   global_seed <- i
   df_sim <- simulation_function(seed.global = global_seed, beta = c(-1.5,2), cov.formula = cov.formula, rho.spde = A_DF$range[i], sigma.spde = A_DF$sigma[i])
   ind_sample <- ind_sampling(df = df_sim, seed.sample = global_seed, size = A_DF$size[i])
