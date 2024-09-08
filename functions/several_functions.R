@@ -1,15 +1,17 @@
 # several functions
 
 rmse <- function(y.sim, y.model){
+  # Function to calculate the root means sequare error (RMSE).
   return(sqrt(mean(y.sim-y.model)**2))
 }
 
 mape <- function(y.sim, y.model){
+  # Function to calculate the mean absolute proportional error (MAPE).
   return(mean(abs((y.sim-y.model)/y.sim))*100)
 }
 
 combinatorialFunction <- function(input_list){
-  # this function returns a data.frame with the whole set of combinations of the different parameter values
+  # This function returns a data.frame with the whole set of combinations of the different parameter values
   DF.old <- input_list
   DF.new <- input_list
   for(i in 2:length(input_list)){
